@@ -38,6 +38,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+
 public class TorrentActivity extends Activity{
 	public final int segmentSize = 512;
 	 public List<FileMetaData> requestList= new ArrayList<FileMetaData>();
@@ -143,7 +144,7 @@ public class TorrentActivity extends Activity{
         fileTextView[0] = (TextView)findViewById(R.id.fileTextView1);
         fileTextView[1] = (TextView)findViewById(R.id.fileTextView2);
         fileTextView[2] = (TextView)findViewById(R.id.fileTextView3);
-        
+
         /****Check for External Storage Availability***************/
         String state = Environment.getExternalStorageState();
 
@@ -166,7 +167,7 @@ public class TorrentActivity extends Activity{
        
         File currentFile[] = mainFolder.listFiles();
        /************************Fill myFiles List with the available files***********/
-        for(int t=0;t<currentFile.length;t++){
+        for(int t=0;currentFile!=null&&t<currentFile.length;t++){
         	FileMetaData temp = new FileMetaData();
         	temp.name = currentFile[t].getName();
         	temp.fileSize = currentFile[t].length();
@@ -256,6 +257,6 @@ public class TorrentActivity extends Activity{
         unregisterReceiver(receiver);
         Toast.makeText(this,"Pause",Toast.LENGTH_SHORT).show();
     }
-    
+
   
 }
